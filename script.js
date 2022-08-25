@@ -1,76 +1,50 @@
 
 
-// let nomes = ["David", "Denisson", "de" , "Oliveira", "Felix"];
-
-// console.log(nomes[1], nomes[3], nomes[4]);
-
-
-// let teste = ["False", "True", "False", "True"];
-
-// console.log(nomes.length, teste.length);
+const form = document.getElementById('form')
+const username = document.getElementById('username')
+const email = document.getElementById('email')
+const password = document.getElementById('password')
+const confirmpassword = document.getElementById('passwordtwo')
 
 
-// let onibus = {
-//     rodas: 8,
-//     passageiros: 40,
-//     portas: 2
-// }
 
-// console.log(onibus.rodas, onibus.passageiros, onibus.portas);
+form.addEventListener('submit', (e) =>{
+    
+    e.preventDefault()
+    checkInputs()
+})
 
-// onibus.janelas = 20;
+function checkInputs(){
+    const usernameValue = username.value.trim()
+    const emailValue = email.value.trim()
+    const passwordValue = password.value.trim()
+    const confirmpasswordValue = confirmpassword.value.trim()
 
-// delete onibus.rodas;
-
-// console.log(onibus);
-
-// let ArrayTeste1 = ["Teste", "Teste2", "Teste3", "Teste4", "Teste5", "Teste6"];
-// let ArrayTeste2 = ["Teste1", "Teste2", "Teste3"];
-
-// function VerificaArray(argument){
-//     if(ArrayTeste1.length < 5){
-//         console.log("Menor que 5");
-//     }
-//     else if(ArrayTeste1.length >= 5){
-//         console.log("Maior ou igual a 5");
-//     }
-// }
-
-// console.log(VerificaArray(ArrayTeste1));
-
-
-// let frutas = ["Maçã", "Banana", "Melão", "Melancia", "Laranja"];
-
-// for(let i= 0; i < frutas.length; i++){
-//     console.log(frutas[i]);
-// }
-
-
-// const frase  = "Ser um programdor sei la oq só é teste";
-
-// const arrFrase = frase.split(" ");
-
-// for(let i = 0; i < arrFrase.length; i++){
-//     console.log(arrFrase[i]);
-// }
-
-
-let calculadora = {
-    somar: function(obj1, obj2){
-        return obj1 + obj2;
-    },
-    dividir: function(obj1, obj2){
-        return obj1 / obj2;
-    },
-    multiplicar: function(obj1, obj2){
-        return obj1 * obj2;
-    },
-    subtrair: function(obj1, obj2){
-        return obj1 - obj2;
-    }   
-
+    if(username.value === ''){
+        //mostrar erro
+        //adicionar a classe error
+        errorValidation(username, ' Preencha este campo')
+    }
+    else{
+        //adicionar a classe de sucesso
+        sucessValidation(username)
+    }
 }
 
-console.log(calculadora.somar(1, 2));
+function errorValidation(input, messages){
+    const formControl = input.parentElement;
+    const OtherControl = formControl.parentElement;
+    const small = OtherControl.querySelector('small')
+    small.style.display = "flex";
+    small.innerText = messages ;
+    OtherControl.className = "form-control error"
+}
 
-console.log(calculadora.dividir(10, 2));
+function sucessValidation(input){
+    const formControl = input.parentElement;
+    const OtherControl = formControl.parentElement;
+    const small = OtherControl.querySelector('small')
+    small.style.display = "none";
+    
+    OtherControl.className = "form-control sucess"
+}

@@ -146,10 +146,11 @@ body{
 }
 
 .form button{
+    width: 300px!important;
     margin-top: 3%;
     margin-left: 2%;
     border: none;
-    border-radius: 3%;
+    border-radius: 5px;
     height: 30px;
     width: 75px;
     background: var(--color-secundary);
