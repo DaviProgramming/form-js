@@ -20,7 +20,7 @@ function checkInputs(){
     const passwordValue = password.value.trim()
     const confirmpasswordValue = confirmpassword.value.trim()
 
-    if(username.value === ''){
+    if(usernameValue === ''){
         //mostrar erro
         //adicionar a classe error
         errorValidation(username, ' Preencha este campo')
@@ -29,6 +29,32 @@ function checkInputs(){
         //adicionar a classe de sucesso
         sucessValidation(username)
     }
+
+
+    if(emailValue === ''){
+        errorValidation(email, 'Preencha com um email valido')
+    }
+    else{
+        sucessValidation(email)
+    }
+
+    if(passwordValue === ''){
+        errorValidation(password, 'Preencha com uma senha valida')
+    }
+
+    else {
+        sucessValidation(password)
+    }
+
+   if(passwordValue != confirmpasswordValue && passwordValue != ''){
+        errorValidation(confirmpassword, 'As senhas nao batem')
+    }
+    else if(passwordValue == confirmpasswordValue && passwordValue != ''){
+        sucessValidation(confirmpassword)
+    }
+
+    
+
 }
 
 function errorValidation(input, messages){
